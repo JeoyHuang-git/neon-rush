@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#070b1c" />
+  <title>NEON RUSH // 赛博朋克极速跑酷</title>
+  <link rel="stylesheet" href="style.css" />
+  <script type="importmap">
+  {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js"}}
+  </script>
+</head>
+<body>
+  <div id="game"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <header id="hud" class="hidden">
+    <div class="hud-block"><span class="kicker">SCORE / 得分</span><strong id="score">000000</strong></div>
+    <div class="hud-block"><span class="kicker">COINS / 金币</span><strong id="coins">0</strong></div>
+    <div class="hud-block"><span class="kicker">LEVEL / 难度</span><strong id="level">01</strong></div>
+    <div class="hud-block"><span class="kicker">LIFE / 生命</span><strong id="hearts">♥ ♥ ♥</strong></div>
+    <button id="soundBtn" class="icon-btn" title="音乐开关 (M)" aria-label="音乐开关">♪ ON</button>
+    <button id="pauseBtn" class="icon-btn" title="暂停 (P)" aria-label="暂停">Ⅱ</button>
+  </header>
+  <div id="levelToast" role="status"></div>
+  <div id="hitFlash"></div>
+  <div id="screen" class="screen">
+    <section id="menuPanel" class="panel">
+      <span class="eyebrow">NIGHT CITY // 2088</span>
+      <h1>NEON <em>RUSH</em></h1>
+      <p class="subtitle">赛博朋克极速跑酷 · 在霓虹之城里活下去</p>
+      <div class="hero-pills"><span>3D 无尽跑酷</span><span>动态难度</span><span>原创合成音效</span></div>
+      <div class="instructions">
+        <div><kbd>←</kbd><kbd>→</kbd> / <kbd>A</kbd><kbd>D</kbd><span>左右换道</span></div>
+        <div><kbd>↑</kbd> / <kbd>W</kbd><kbd>SPACE</kbd><span>跳过矮墙</span></div>
+        <div><kbd>↓</kbd> / <kbd>S</kbd><span>滑铲穿过光束</span></div>
+        <div><kbd>P</kbd> / <kbd>ESC</kbd><span>暂停游戏</span></div>
+        <div class="mobile-instruction">📱 手机上左右滑动换道、上滑跳跃、下滑滑铲，也可点击屏幕按钮</div>
+      </div>
+      <p class="best">历史最高分 <b id="menuBest">0</b></p>
+      <button id="startBtn" class="primary">启动奔跑 <span>▶</span></button>
+      <p class="fineprint">电脑键盘 / 手机触控双端支持 · 首次打开需联网加载 Three.js</p>
+    </section>
+    <section id="pausePanel" class="panel hidden">
+      <span class="eyebrow">SYSTEM PAUSED</span><h2>游戏暂停</h2>
+      <p class="subtitle">城市不会停下，但你可以。</p>
+      <button id="resumeBtn" class="primary">继续奔跑 ▶</button>
+      <button id="pauseHomeBtn" class="secondary">返回主菜单</button>
+    </section>
+    <section id="overPanel" class="panel hidden">
+      <span class="eyebrow">RUN TERMINATED</span><h2>挑战结束</h2>
+      <p class="subtitle" id="overMessage">别让霓虹熄灭，再来一次！</p>
+      <div class="results"><div><span>本次得分</span><strong id="finalScore">0</strong></div><div><span>获得金币</span><strong id="finalCoins">0</strong></div><div><span>到达等级</span><strong id="finalLevel">1</strong></div><div><span>历史最高</span><strong id="finalBest">0</strong></div></div>
+      <button id="restartBtn" class="primary">再次挑战 ↻</button>
+      <button id="homeBtn" class="secondary">返回主菜单</button>
+    </section>
+  </div>
+  <div id="mobileControls" class="hidden">
+    <button id="leftTouch" aria-label="向左">◀</button>
+    <button id="jumpTouch" aria-label="跳跃">跳跃</button>
+    <button id="slideTouch" aria-label="滑铲">滑铲</button>
+    <button id="rightTouch" aria-label="向右">▶</button>
+  </div>
+  <div id="helpbar">躲开红色立柱 · 跳过橙色矮墙 · 滑过紫色激光 · 收集金色能量币</div>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
